@@ -3,56 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GROE ENTERTAINMENT INC | Autonomous Infrastructure</title>
+    <title>GROE ENTERTAINMENT | SUPERSTORKDELIVERY Global Hub</title>
     <style>
-        :root { --navy: #002868; --red: #bf0a30; --white: #ffffff; --green: #28a745; }
-        body { font-family: 'Inter', sans-serif; margin: 0; background: var(--white); color: #333; }
-        header { background: var(--navy); color: white; padding: 80px 20px; text-align: center; border-bottom: 10px solid var(--red); }
-        .status-bar { background: #111; color: var(--green); padding: 10px; font-family: monospace; font-size: 0.8rem; text-align: center; }
-        .container { max-width: 1200px; margin: auto; padding: 50px 20px; }
-        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
-        .panel { border: 1px solid #ddd; padding: 40px; border-radius: 12px; position: relative; overflow: hidden; }
-        .panel::before { content: ""; position: absolute; top: 0; left: 0; width: 6px; height: 100%; background: var(--navy); }
-        .btn-main { background: var(--red); color: white; padding: 20px 40px; text-decoration: none; font-weight: bold; display: inline-block; margin-top: 30px; border-radius: 5px; }
-        .legal-footer { background: #f8f9fa; padding: 50px 20px; font-size: 0.85rem; border-top: 1px solid #eee; }
+        :root { --navy: #001f3f; --red: #d32f2f; --gold: #ffd700; --white: #ffffff; }
+        body { font-family: 'Inter', 'Segoe UI', sans-serif; margin: 0; background: #0a0a0a; color: var(--white); }
+        .top-bar { background: var(--red); color: white; padding: 10px; font-weight: bold; text-align: center; font-size: 0.9rem; letter-spacing: 2px; }
+        header { padding: 100px 20px; text-align: center; background: linear-gradient(rgba(0,31,63,0.8), rgba(0,31,63,0.8)), url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=2000'); background-size: cover; border-bottom: 5px solid var(--gold); }
+        .brand-title { font-size: 4rem; font-weight: 900; margin: 0; text-transform: uppercase; letter-spacing: -2px; }
+        .brand-sub { color: var(--gold); font-size: 1.5rem; font-weight: 300; margin-top: 10px; }
+        .container { max-width: 1200px; margin: auto; padding: 60px 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
+        .module { background: #151515; border: 1px solid #333; padding: 40px; border-radius: 4px; transition: 0.4s; }
+        .module:hover { border-color: var(--red); transform: scale(1.02); }
+        .module h2 { color: var(--red); text-transform: uppercase; margin-top: 0; }
+        .status-light { display: inline-block; width: 12px; height: 12px; background: #00ff00; border-radius: 50%; margin-right: 8px; box-shadow: 0 0 10px #00ff00; }
+        .btn { display: inline-block; background: var(--white); color: #000; padding: 15px 35px; text-decoration: none; font-weight: bold; margin-top: 20px; text-transform: uppercase; }
+        footer { padding: 50px; background: #000; text-align: center; border-top: 1px solid #222; color: #666; }
     </style>
 </head>
 <body>
-    <div class="status-bar">● ALL SYSTEMS OPERATIONAL | NODES: CHICAGO-01, IL-LOGISTICS | AUTO-UPDATE: ENABLED</div>
+    <div class="top-bar">SYSTEM STATUS: ARCHITECTURE DEPLOYED | NETWORK: ACTIVE</div>
     <header>
-        <h1 style="font-size: 3.5rem; margin: 0;">GROE ENTERTAINMENT</h1>
-        <p style="letter-spacing: 5px; text-transform: uppercase;">Infrastructure for the Next Era</p>
+        <h1 class="brand-title">SUPERSTORKDELIVERY</h1>
+        <div class="brand-sub">By GROE ENTERTAINMENT INC.</div>
+        <p>The Advanced Logistics Aggregator & Autonomous Freight Network</p>
+        <a href="mailto:exec@groeentinc.com" class="btn">Partner with SuperStork</a>
     </header>
 
     <div class="container">
-        <div class="service-grid">
-            <div class="panel">
-                <h2>SuperStork Delivery</h2>
-                <p>The "DoorDash Killer." Multi-vector logistics aggregator utilizing real-time routing and autonomous dispatching. Currently in Beta Deployment.</p>
-                <span style="color: var(--green);">[ ACTIVE NODES ]</span>
+        <div class="grid">
+            <div class="module">
+                <h2><span class="status-light"></span>Dispatch Engine</h2>
+                <p>AI-driven routing that outperforms traditional couriers by 22%. Fully integrated with the GROE Logistics mid-west fleet.</p>
             </div>
-            <div class="panel">
-                <h2>GROE AI (Voila)</h2>
-                <p>Neural workstation for cinematic audio and high-fidelity music production. Direct distribution to global markets enabled.</p>
-                <span style="color: var(--green);">[ ENGINE LIVE ]</span>
+            <div class="module">
+                <h2><span class="status-light"></span>Merchant Portal</h2>
+                <p>Direct API injection for restaurants and retailers. No predatory margins. Real-time fulfillment via SUPERSTORKDELIVERY nodes.</p>
+            </div>
+            <div class="module">
+                <h2><span class="status-light"></span>Autonomous Tech</h2>
+                <p>Developing the future of self-correcting delivery paths and high-frequency logistics management.</p>
             </div>
         </div>
-        
-        <center><a href="mailto:office@groeentinc.com" class="btn-main">Connect to Corporate HQ</a></center>
     </div>
 
-    <section class="legal-footer">
-        <div class="container" style="text-align: left;">
-            <h3>Corporate Transparency & Compliance</h3>
-            <p><strong>Terms:</strong> Services provided "as-is" under IL Corporate Law. Autonomous systems are monitored 24/7.</p>
-            <p><strong>Refunds:</strong> 7-day window for digital seats; 24-hour for logistics cancellations.</p>
-            <p><strong>Privacy:</strong> We utilize end-to-end encryption for all merchant data via SuperStork API.</p>
-        </div>
-    </section>
-
-    <footer style="background: #000; color: #555; padding: 40px; text-align: center;">
-        122 S Michigan Ave Suite 1390, Chicago, IL 60602 | (312) 847-9220<br>
-        &copy; 2026 GROE Entertainment Inc.
+    <footer>
+        <p><strong>GROE ENTERTAINMENT INC. HQ</strong></p>
+        <p>122 S Michigan Ave Suite 1390, Chicago, IL 60602</p>
+        <p>(312) 847-9220 | &copy; 2026 SUPERSTORKDELIVERY</p>
     </footer>
 </body>
 </html>
