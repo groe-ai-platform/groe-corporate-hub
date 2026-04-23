@@ -3,75 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GROE ENTERTAINMENT INC | Corporate Headquarters</title>
+    <title>GROE ENTERTAINMENT INC | Autonomous Infrastructure</title>
     <style>
-        :root { --navy: #002868; --red: #bf0a30; --white: #ffffff; --gray: #f4f4f4; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; color: #333; line-height: 1.6; background: var(--white); }
-        header { background: var(--navy); color: white; padding: 60px 20px; text-align: center; border-bottom: 8px solid var(--red); }
-        .hero-h1 { font-size: 3rem; margin: 0; letter-spacing: 4px; text-transform: uppercase; }
-        .container { max-width: 1100px; margin: auto; padding: 40px 20px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
-        .card { background: var(--gray); padding: 30px; border-radius: 5px; border-top: 4px solid var(--navy); transition: 0.3s; }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        h2 { color: var(--navy); border-bottom: 2px solid var(--red); display: inline-block; padding-bottom: 5px; }
-        .legal-section { background: #eee; padding: 40px 20px; margin-top: 60px; font-size: 0.9rem; color: #555; text-align: left; border-radius: 8px; }
-        .legal-box { height: 200px; overflow-y: scroll; background: white; padding: 20px; border: 1px solid #ddd; margin-bottom: 20px; }
-        .contact-btn { display: inline-block; background: var(--red); color: white; padding: 15px 35px; text-decoration: none; font-weight: bold; border-radius: 3px; margin-top: 20px; text-transform: uppercase; }
-        footer { background: #111; color: white; padding: 60px 20px; text-align: center; }
+        :root { --navy: #002868; --red: #bf0a30; --white: #ffffff; --green: #28a745; }
+        body { font-family: 'Inter', sans-serif; margin: 0; background: var(--white); color: #333; }
+        header { background: var(--navy); color: white; padding: 80px 20px; text-align: center; border-bottom: 10px solid var(--red); }
+        .status-bar { background: #111; color: var(--green); padding: 10px; font-family: monospace; font-size: 0.8rem; text-align: center; }
+        .container { max-width: 1200px; margin: auto; padding: 50px 20px; }
+        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+        .panel { border: 1px solid #ddd; padding: 40px; border-radius: 12px; position: relative; overflow: hidden; }
+        .panel::before { content: ""; position: absolute; top: 0; left: 0; width: 6px; height: 100%; background: var(--navy); }
+        .btn-main { background: var(--red); color: white; padding: 20px 40px; text-decoration: none; font-weight: bold; display: inline-block; margin-top: 30px; border-radius: 5px; }
+        .legal-footer { background: #f8f9fa; padding: 50px 20px; font-size: 0.85rem; border-top: 1px solid #eee; }
     </style>
 </head>
 <body>
+    <div class="status-bar">● ALL SYSTEMS OPERATIONAL | NODES: CHICAGO-01, IL-LOGISTICS | AUTO-UPDATE: ENABLED</div>
+    <header>
+        <h1 style="font-size: 3.5rem; margin: 0;">GROE ENTERTAINMENT</h1>
+        <p style="letter-spacing: 5px; text-transform: uppercase;">Infrastructure for the Next Era</p>
+    </header>
 
-<header>
-    <div class="hero-h1">GROE ENTERTAINMENT</div>
-    <p style="font-size: 1.2rem; opacity: 0.9;">The Engine of Innovation & Digital Infrastructure</p>
-    <a href="tel:3128479220" class="contact-btn">Executive Line: (312) 847-9220</a>
-</header>
-
-<div class="container">
-    <section>
-        <center><h2>Corporate Divisions</h2></center>
-        <div class="grid">
-            <div class="card">
-                <h3>SuperStork Delivery</h3>
-                <p>A next-generation delivery service aggregator utilizing AI-driven logistics to bridge the gap between merchants and consumers with unprecedented speed.</p>
+    <div class="container">
+        <div class="service-grid">
+            <div class="panel">
+                <h2>SuperStork Delivery</h2>
+                <p>The "DoorDash Killer." Multi-vector logistics aggregator utilizing real-time routing and autonomous dispatching. Currently in Beta Deployment.</p>
+                <span style="color: var(--green);">[ ACTIVE NODES ]</span>
             </div>
-            <div class="card">
-                <h3>GROE AI (Voila)</h3>
-                <p>The premier AI music workstation for independent artists. Providing professional-grade tools for production, synthesis, and digital distribution.</p>
-            </div>
-            <div class="card">
-                <h3>GROE Logistics</h3>
-                <p>Our freight and shipping division, managing the complex supply chain and automotive logistics that power the Midwest economy.</p>
+            <div class="panel">
+                <h2>GROE AI (Voila)</h2>
+                <p>Neural workstation for cinematic audio and high-fidelity music production. Direct distribution to global markets enabled.</p>
+                <span style="color: var(--green);">[ ENGINE LIVE ]</span>
             </div>
         </div>
-    </section>
-
-    <section class="legal-section">
-        <center><h2>Compliance & Legal</h2></center>
         
-        <h3>Terms of Service</h3>
-        <div class="legal-box">
-            By accessing GROE Entertainment Inc services, you agree to our corporate terms. We provide software-as-a-service (SaaS) and logistics management tools. All intellectual property generated on GROE AI remains the property of the creator, subject to licensing agreements.
-        </div>
+        <center><a href="mailto:office@groeentinc.com" class="btn-main">Connect to Corporate HQ</a></center>
+    </div>
 
-        <h3>Privacy Policy</h3>
-        <div class="legal-box">
-            We value your data. GROE Entertainment Inc. does not sell user information. We collect data strictly for the fulfillment of logistics orders and the improvement of our AI training modules. Your 312-area code contact data is encrypted.
-        </div>
-
-        <h3>Refund & Cancellation Policy</h3>
-        <div class="legal-box">
-            Logistics services may be cancelled within 24 hours of booking. Software subscriptions (GROE AI) are eligible for a full refund within 7 days of initial purchase if no exports have been made. All digital assets are final sale once generated.
+    <section class="legal-footer">
+        <div class="container" style="text-align: left;">
+            <h3>Corporate Transparency & Compliance</h3>
+            <p><strong>Terms:</strong> Services provided "as-is" under IL Corporate Law. Autonomous systems are monitored 24/7.</p>
+            <p><strong>Refunds:</strong> 7-day window for digital seats; 24-hour for logistics cancellations.</p>
+            <p><strong>Privacy:</strong> We utilize end-to-end encryption for all merchant data via SuperStork API.</p>
         </div>
     </section>
-</div>
 
-<footer>
-    <p><strong>GROE ENTERTAINMENT INC.</strong></p>
-    <p>122 S Michigan Ave Suite 1390, Chicago, IL 60602</p>
-    <p>&copy; 2026 | All Rights Reserved. | Registered Corporate Entity, Illinois.</p>
-</footer>
-
+    <footer style="background: #000; color: #555; padding: 40px; text-align: center;">
+        122 S Michigan Ave Suite 1390, Chicago, IL 60602 | (312) 847-9220<br>
+        &copy; 2026 GROE Entertainment Inc.
+    </footer>
 </body>
 </html>
