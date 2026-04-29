@@ -6,83 +6,130 @@
     <title>SuperStork Delivery</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* RESET EVERYTHING TO ZERO TO MATCH MOCKUP EXACTLY */
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        :root { --stork-blue: #004a8c; --stork-red: #e31837; --light-gray: #f2f2f2; }
-        body { font-family: 'Helvetica Neue', Arial, sans-serif; background: white; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        :root { --stork-blue: #004a8c; --stork-red: #e31837; --bg-gray: #f7f7f7; }
+        body { background: var(--bg-gray); color: #333; }
 
-        /* HEADER: IDENTICAL TO LOGO LAYOUT */
-        .header { background: var(--stork-blue); height: 75px; display: flex; align-items: center; padding: 0 15px; border-bottom: 4px solid var(--stork-red); }
-        .logo-wrap { display: flex; align-items: center; gap: 8px; }
-        .mascot-img { height: 60px; width: auto; object-fit: contain; }
-        .brand-name { color: white; font-size: 24px; font-weight: 900; font-style: italic; letter-spacing: -1.5px; text-transform: uppercase; }
+        /* HEADER: NAVY SECTION */
+        .top-nav { background: var(--stork-blue); padding: 12px 20px; display: flex; justify-content: center; align-items: center; border-bottom: 3px solid var(--stork-red); }
+        .logo-container { display: flex; align-items: center; gap: 10px; }
+        .mascot-head { height: 40px; }
+        .brand-text { color: white; font-size: 22px; font-weight: 900; font-style: italic; letter-spacing: -1px; text-transform: uppercase; }
 
-        /* SEARCH AREA: GREY BACKGROUND MATCH */
-        .sub-header { background: var(--light-gray); padding: 12px 15px; border-bottom: 1px solid #ddd; }
-        .search-container { background: white; border-radius: 6px; height: 44px; display: flex; align-items: center; padding: 0 12px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
-        .search-container i { color: #888; font-size: 16px; }
-        .search-container input { border: none; outline: none; width: 100%; margin-left: 10px; font-size: 15px; font-weight: 500; }
+        /* SEARCH & LOCATION BARS: WHITE STACKED */
+        .search-section { background: white; padding: 15px; border-bottom: 1px solid #ddd; }
+        .bar { background: white; border: 1px solid #e0e0e0; border-radius: 8px; height: 45px; display: flex; align-items: center; padding: 0 15px; margin-bottom: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .bar i { color: #888; font-size: 16px; margin-right: 12px; }
+        .bar input { border: none; outline: none; width: 100%; font-size: 14px; font-weight: 500; }
+        .location-bar { margin-bottom: 0; }
+
+        /* CATEGORY ICONS: EXACT MATCH TO MOCKUP */
+        .cat-row { display: flex; justify-content: space-between; padding: 20px 10px; background: white; overflow-x: auto; }
+        .cat-item { text-align: center; min-width: 70px; }
+        .cat-icon-wrap { width: 50px; height: 50px; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center; position: relative; }
+        .cat-icon-wrap img { width: 45px; height: 45px; object-fit: contain; }
+        .cat-item span { font-size: 11px; font-weight: 800; color: #111; }
+        .badge-count { position: absolute; top: -5px; right: -5px; background: var(--stork-blue); color: white; font-size: 10px; padding: 2px 5px; border-radius: 10px; }
+
+        /* FEATURED SECTION */
+        .content { padding: 15px; padding-bottom: 100px; }
+        .section-title { font-size: 16px; font-weight: 900; margin-bottom: 15px; }
+        .hero-card { background: white; border-radius: 15px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); position: relative; }
+        .hero-img { height: 180px; background: url('https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800') center/cover; }
         
-        .location-line { display: flex; align-items: center; margin-top: 10px; color: #333; font-size: 13px; font-weight: 700; }
-        .location-line i { color: var(--stork-red); margin-right: 6px; }
+        /* RESTAURANT GRID: 2 COLUMNS */
+        .res-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .res-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .res-img { height: 110px; background-size: cover; background-position: center; }
+        .res-info { padding: 10px; }
+        .res-info h4 { font-size: 13px; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .res-meta { font-size: 10px; color: #777; display: flex; align-items: center; gap: 5px; }
+        .res-meta i { color: #f39c12; }
+        .free-del { color: #2e7d32; font-weight: bold; margin-top: 4px; font-size: 10px; }
 
-        /* CATEGORIES: CIRCLES WITH TEXT */
-        .cat-scroll { display: flex; gap: 20px; padding: 20px 15px; overflow-x: auto; scrollbar-width: none; border-bottom: 1px solid #eee; }
-        .cat-card { text-align: center; min-width: 75px; }
-        .cat-circle { width: 55px; height: 55px; border-radius: 50%; background: #eee; margin: 0 auto 6px; border: 1px solid #ddd; background-size: cover; background-position: center; }
-        .cat-card span { display: block; font-size: 11px; font-weight: 800; color: #111; }
-
-        /* CONTENT CARDS */
-        .main-body { padding: 15px; padding-bottom: 100px; }
-        .label { font-size: 19px; font-weight: 900; margin-bottom: 12px; color: #000; letter-spacing: -0.5px; }
-        .hero-banner { width: 100%; height: 210px; border-radius: 12px; background: url('https://images.unsplash.com/photo-1627626775846-122b778965ae?w=800') center/cover; margin-bottom: 25px; position: relative; }
-        .badge { position: absolute; top: 12px; left: 12px; background: white; color: #000; padding: 5px 10px; border-radius: 4px; font-size: 11px; font-weight: 900; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
-
-        /* BOTTOM APP NAV */
-        .app-nav { position: fixed; bottom: 0; width: 100%; height: 70px; background: white; border-top: 1px solid #eee; display: flex; justify-content: space-around; align-items: center; z-index: 2000; }
-        .nav-link { text-align: center; color: #bbb; text-decoration: none; font-weight: 700; font-size: 10px; }
+        /* BOTTOM APP NAV BAR */
+        .bottom-nav { position: fixed; bottom: 0; width: 100%; height: 75px; background: white; display: flex; justify-content: space-around; align-items: center; border-top: 1px solid #eee; z-index: 1000; }
+        .nav-link { text-align: center; color: #bbb; text-decoration: none; font-size: 10px; font-weight: bold; }
         .nav-link.active { color: var(--stork-blue); }
-        .nav-link i { display: block; font-size: 22px; margin-bottom: 4px; }
+        .nav-link i { display: block; font-size: 22px; margin-bottom: 5px; }
     </style>
 </head>
 <body>
 
-<div class="header">
-    <div class="logo-wrap">
-        <img src="https://groeentertainment.com/wp-content/uploads/2024/03/Stork_Logo_With_Bags-1024x1024.png" class="mascot-img">
-        <h1 class="brand-name">SUPERSTORK</h1>
+<div class="top-nav">
+    <div class="logo-container">
+        <img src="https://groeentertainment.com/wp-content/uploads/2024/03/Stork_Logo_With_Bags-1024x1024.png" class="mascot-head">
+        <h1 class="brand-text">STORK <span style="font-weight:300">DELIVERY</span></h1>
     </div>
 </div>
 
-<div class="sub-header">
-    <div class="search-container">
+<div class="search-section">
+    <div class="bar">
         <i class="fas fa-search"></i>
-        <input type="text" placeholder="Search for food, groceries...">
+        <input type="text" placeholder="Search restaurants, groceries, fast food...">
     </div>
-    <div class="location-line">
-        <i class="fas fa-map-marker-alt"></i> Richton Park, IL <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 4px;"></i>
-    </div>
-</div>
-
-<div class="cat-scroll">
-    <div class="cat-card"><div class="cat-circle" style="background-image: url('https://images.unsplash.com/photo-1513104890138-7c749659a591?w=100')"></div><span>Restaurants</span></div>
-    <div class="cat-card"><div class="cat-circle" style="background-image: url('https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=100')"></div><span>Groceries</span></div>
-    <div class="cat-card"><div class="cat-circle" style="background-image: url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=100')"></div><span>Fast Food</span></div>
-    <div class="cat-card"><div class="cat-circle" style="background-image: url('https://images.unsplash.com/photo-1516594798947-e65505dbb29d?w=100')"></div><span>Gifts</span></div>
-</div>
-
-<div class="main-body">
-    <h2 class="label">Featured: GROE Gourmet Pizza</h2>
-    <div class="hero-banner">
-        <div class="badge">FREE DELIVERY</div>
+    <div class="bar location-bar">
+        <i class="fas fa-map-marker-alt" style="color:var(--stork-red)"></i>
+        <input type="text" value="Richton Park, IL" readonly>
     </div>
 </div>
 
-<div class="app-nav">
-    <a href="#" class="nav-link active"><i class="fas fa-home"></i>HOME</a>
-    <a href="#" class="nav-link"><i class="fas fa-search"></i>SEARCH</a>
-    <a href="#" class="nav-link"><i class="fas fa-list-alt"></i>ORDERS</a>
-    <a href="#" class="nav-link"><i class="fas fa-user"></i>ACCOUNT</a>
+<div class="cat-row">
+    <div class="cat-item">
+        <div class="cat-icon-wrap"><i class="fas fa-utensils" style="font-size:30px; color:#555;"></i></div>
+        <span>Restaurants</span>
+    </div>
+    <div class="cat-item">
+        <div class="cat-icon-wrap"><i class="fas fa-shopping-basket" style="font-size:30px; color:#2e7d32;"></i></div>
+        <span>Groceries</span>
+    </div>
+    <div class="cat-item">
+        <div class="cat-icon-wrap"><i class="fas fa-hamburger" style="font-size:30px; color:#d32f2f;"></i></div>
+        <span>Fast Food</span>
+    </div>
+    <div class="cat-item">
+        <div class="cat-icon-wrap"><i class="fab fa-google" style="font-size:30px; color:var(--stork-blue);"></i><div class="badge-count">8</div></div>
+        <span>STORK Groe</span>
+    </div>
+    <div class="cat-item">
+        <div class="cat-icon-wrap"><i class="fas fa-gift" style="font-size:30px; color:#f39c12;"></i></div>
+        <span>Gifts</span>
+    </div>
+</div>
+
+<div class="content">
+    <h3 class="section-title">Featured: GROE Gourmet Pizza - Free Delivery!</h3>
+    <div class="hero-card">
+        <div class="hero-img"></div>
+    </div>
+
+    <h3 class="section-title">Nearby in Richton Park <span style="float:right; color:var(--stork-blue); font-size:12px;">See All</span></h3>
+    
+    <div class="res-grid">
+        <div class="res-card">
+            <div class="res-img" style="background-image: url('https://images.unsplash.com/photo-1594179047519-f347310d3322?w=400')"></div>
+            <div class="res-info">
+                <h4>Illinois Bass & BBQ</h4>
+                <div class="res-meta"><i class="fas fa-star"></i> 4.8 (25 min)</div>
+                <div class="free-del">FREE Delivery</div>
+            </div>
+        </div>
+        <div class="res-card">
+            <div class="res-img" style="background-image: url('https://images.unsplash.com/photo-1627626775846-122b778965ae?w=400')"></div>
+            <div class="res-info">
+                <h4>GROE Gourmet Pizza</h4>
+                <div class="res-meta"><i class="fas fa-star"></i> 4.9 (55 min)</div>
+                <div class="free-del">FREE Delivery</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bottom-nav">
+    <a href="#" class="nav-link active"><i class="fas fa-home"></i>Home</a>
+    <a href="#" class="nav-link"><i class="fas fa-search"></i>Search</a>
+    <a href="#" class="nav-link"><i class="fas fa-list-alt"></i>Orders</a>
+    <a href="#" class="nav-link"><i class="fas fa-user"></i>Account</a>
 </div>
 
 </body>
