@@ -2,135 +2,176 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SuperStork Delivery</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STORK DELIVERY | GROE ENTERTAINMENT</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        :root { --stork-blue: #004a8c; --stork-red: #e31837; --bg-gray: #f7f7f7; }
-        body { background: var(--bg-gray); color: #333; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
+        :root { --stork-blue: #004a8c; --stork-red: #e31837; --border: #e0e0e0; --bg: #f8f9fa; }
+        body { background: var(--bg); display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
 
-        /* HEADER: NAVY SECTION */
-        .top-nav { background: var(--stork-blue); padding: 12px 20px; display: flex; justify-content: center; align-items: center; border-bottom: 3px solid var(--stork-red); }
-        .logo-container { display: flex; align-items: center; gap: 10px; }
-        .mascot-head { height: 40px; }
-        .brand-text { color: white; font-size: 22px; font-weight: 900; font-style: italic; letter-spacing: -1px; text-transform: uppercase; }
+        /* HEADER: FULL WIDTH BLUE BAR */
+        .header { background: var(--stork-blue); height: 60px; display: flex; align-items: center; padding: 0 20px; color: white; flex-shrink: 0; }
+        .header-left { display: flex; align-items: center; gap: 15px; flex: 1; }
+        .menu-bars { font-size: 20px; cursor: pointer; }
+        .header-logo { display: flex; align-items: center; gap: 10px; }
+        .mascot-img { height: 45px; }
+        .logo-text { line-height: 1; }
+        .logo-text h1 { font-size: 20px; font-weight: 900; font-style: italic; }
+        .logo-text span { font-size: 10px; text-transform: uppercase; display: block; }
 
-        /* SEARCH & LOCATION BARS: WHITE STACKED */
-        .search-section { background: white; padding: 15px; border-bottom: 1px solid #ddd; }
-        .bar { background: white; border: 1px solid #e0e0e0; border-radius: 8px; height: 45px; display: flex; align-items: center; padding: 0 15px; margin-bottom: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-        .bar i { color: #888; font-size: 16px; margin-right: 12px; }
-        .bar input { border: none; outline: none; width: 100%; font-size: 14px; font-weight: 500; }
-        .location-bar { margin-bottom: 0; }
+        .search-container { flex: 2; display: flex; justify-content: center; }
+        .search-bar { background: white; width: 80%; height: 38px; border-radius: 4px; display: flex; align-items: center; padding: 0 15px; }
+        .search-bar i { color: #888; margin-right: 10px; }
+        .search-bar input { border: none; outline: none; width: 100%; font-size: 14px; color: #333; }
 
-        /* CATEGORY ICONS: EXACT MATCH TO MOCKUP */
-        .cat-row { display: flex; justify-content: space-between; padding: 20px 10px; background: white; overflow-x: auto; }
-        .cat-item { text-align: center; min-width: 70px; }
-        .cat-icon-wrap { width: 50px; height: 50px; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center; position: relative; }
-        .cat-icon-wrap img { width: 45px; height: 45px; object-fit: contain; }
-        .cat-item span { font-size: 11px; font-weight: 800; color: #111; }
-        .badge-count { position: absolute; top: -5px; right: -5px; background: var(--stork-blue); color: white; font-size: 10px; padding: 2px 5px; border-radius: 10px; }
+        .header-right { flex: 1; display: flex; align-items: center; justify-content: flex-end; gap: 20px; font-size: 13px; font-weight: bold; }
+        .location-link { display: flex; align-items: center; gap: 5px; cursor: pointer; }
+        .sign-in-bubble { background: white; color: var(--stork-blue); padding: 6px 15px; border-radius: 20px; cursor: pointer; }
 
-        /* FEATURED SECTION */
-        .content { padding: 15px; padding-bottom: 100px; }
-        .section-title { font-size: 16px; font-weight: 900; margin-bottom: 15px; }
-        .hero-card { background: white; border-radius: 15px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); position: relative; }
-        .hero-img { height: 180px; background: url('https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800') center/cover; }
-        
-        /* RESTAURANT GRID: 2 COLUMNS */
-        .res-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .res-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        .res-img { height: 110px; background-size: cover; background-position: center; }
-        .res-info { padding: 10px; }
-        .res-info h4 { font-size: 13px; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .res-meta { font-size: 10px; color: #777; display: flex; align-items: center; gap: 5px; }
-        .res-meta i { color: #f39c12; }
-        .free-del { color: #2e7d32; font-weight: bold; margin-top: 4px; font-size: 10px; }
+        /* MAIN LAYOUT: 3 COLUMNS */
+        .app-container { display: flex; flex: 1; overflow: hidden; }
 
-        /* BOTTOM APP NAV BAR */
-        .bottom-nav { position: fixed; bottom: 0; width: 100%; height: 75px; background: white; display: flex; justify-content: space-around; align-items: center; border-top: 1px solid #eee; z-index: 1000; }
-        .nav-link { text-align: center; color: #bbb; text-decoration: none; font-size: 10px; font-weight: bold; }
-        .nav-link.active { color: var(--stork-blue); }
-        .nav-link i { display: block; font-size: 22px; margin-bottom: 5px; }
+        /* LEFT SIDEBAR: CUISINE/RATINGS */
+        .sidebar-left { width: 220px; background: white; border-right: 1px solid var(--border); padding: 20px; overflow-y: auto; }
+        .side-section { margin-bottom: 25px; }
+        .side-title { font-size: 14px; font-weight: 900; display: flex; justify-content: space-between; margin-bottom: 15px; }
+        .filter-item { font-size: 13px; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; color: #555; cursor: pointer; }
+        .filter-item input { accent-color: var(--stork-blue); }
+        .more-btn { color: var(--stork-blue); font-weight: bold; font-size: 12px; }
+
+        /* MIDDLE: FEED & HERO */
+        .main-feed { flex: 1; overflow-y: auto; padding: 0 0 50px 0; }
+        .hero-banner { background: linear-gradient(to bottom, #ffffff, #d1d1d1); height: 400px; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; border-bottom: 1px solid var(--border); }
+        .stork-trio { display: flex; align-items: center; justify-content: center; gap: 50px; }
+        .stork-fade { height: 180px; opacity: 0.3; }
+        .stork-main { height: 220px; }
+        .hero-text { text-align: center; margin-top: 20px; }
+        .hero-text h2 { font-size: 40px; font-weight: 900; font-style: italic; }
+        .hero-text .s-red { color: var(--stork-red); }
+        .hero-text .rest-blue { color: var(--stork-blue); }
+        .hero-sub { margin-top: 10px; font-weight: bold; color: #444; }
+
+        .thumbnail-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; padding: 20px; }
+        .thumb-card { background: white; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); position: relative; }
+        .thumb-img { height: 120px; background-size: cover; background-position: center; }
+        .heart-icon { position: absolute; top: 10px; right: 10px; color: white; text-shadow: 0 0 5px rgba(0,0,0,0.5); font-size: 18px; }
+        .thumb-info { padding: 10px; }
+        .thumb-info h4 { font-size: 13px; margin-bottom: 5px; }
+        .thumb-meta { font-size: 11px; color: #777; display: flex; justify-content: space-between; }
+
+        /* RIGHT SIDEBAR: CHECKOUT */
+        .sidebar-right { width: 300px; background: white; border-left: 1px solid var(--border); padding: 20px; overflow-y: auto; }
+        .rect-bubble { border: 1px solid var(--border); border-radius: 4px; padding: 12px; margin-bottom: 10px; font-size: 12px; font-weight: 600; display: flex; justify-content: space-between; }
+        .payment-summary { padding: 15px 0; border-top: 1px solid #eee; margin-top: 15px; font-size: 12px; }
+        .summary-row { display: flex; justify-content: space-between; margin-bottom: 8px; }
+        .btn-place-order { background: var(--stork-red); color: white; text-align: center; padding: 15px; border-radius: 4px; font-weight: 900; cursor: pointer; margin-top: 20px; text-transform: uppercase; }
+        .status-msg { text-align: center; margin-top: 15px; font-size: 12px; font-weight: bold; color: #555; }
     </style>
 </head>
 <body>
 
-<div class="top-nav">
-    <div class="logo-container">
-        <img src="https://groeentertainment.com/wp-content/uploads/2024/03/Stork_Logo_With_Bags-1024x1024.png" class="mascot-head">
-        <h1 class="brand-text">STORK <span style="font-weight:300">DELIVERY</span></h1>
-    </div>
-</div>
-
-<div class="search-section">
-    <div class="bar">
-        <i class="fas fa-search"></i>
-        <input type="text" placeholder="Search restaurants, groceries, fast food...">
-    </div>
-    <div class="bar location-bar">
-        <i class="fas fa-map-marker-alt" style="color:var(--stork-red)"></i>
-        <input type="text" value="Richton Park, IL" readonly>
-    </div>
-</div>
-
-<div class="cat-row">
-    <div class="cat-item">
-        <div class="cat-icon-wrap"><i class="fas fa-utensils" style="font-size:30px; color:#555;"></i></div>
-        <span>Restaurants</span>
-    </div>
-    <div class="cat-item">
-        <div class="cat-icon-wrap"><i class="fas fa-shopping-basket" style="font-size:30px; color:#2e7d32;"></i></div>
-        <span>Groceries</span>
-    </div>
-    <div class="cat-item">
-        <div class="cat-icon-wrap"><i class="fas fa-hamburger" style="font-size:30px; color:#d32f2f;"></i></div>
-        <span>Fast Food</span>
-    </div>
-    <div class="cat-item">
-        <div class="cat-icon-wrap"><i class="fab fa-google" style="font-size:30px; color:var(--stork-blue);"></i><div class="badge-count">8</div></div>
-        <span>STORK Groe</span>
-    </div>
-    <div class="cat-item">
-        <div class="cat-icon-wrap"><i class="fas fa-gift" style="font-size:30px; color:#f39c12;"></i></div>
-        <span>Gifts</span>
-    </div>
-</div>
-
-<div class="content">
-    <h3 class="section-title">Featured: GROE Gourmet Pizza - Free Delivery!</h3>
-    <div class="hero-card">
-        <div class="hero-img"></div>
-    </div>
-
-    <h3 class="section-title">Nearby in Richton Park <span style="float:right; color:var(--stork-blue); font-size:12px;">See All</span></h3>
-    
-    <div class="res-grid">
-        <div class="res-card">
-            <div class="res-img" style="background-image: url('https://images.unsplash.com/photo-1594179047519-f347310d3322?w=400')"></div>
-            <div class="res-info">
-                <h4>Illinois Bass & BBQ</h4>
-                <div class="res-meta"><i class="fas fa-star"></i> 4.8 (25 min)</div>
-                <div class="free-del">FREE Delivery</div>
+    <header class="header">
+        <div class="header-left">
+            <i class="fas fa-bars menu-bars"></i>
+            <div class="header-logo">
+                <img src="https://groeentertainment.com/wp-content/uploads/2024/03/Stork_Logo_With_Bags-1024x1024.png" class="mascot-img" alt="SuperStork">
+                <div class="logo-text">
+                    <h1>STORK</h1>
+                    <span>DELIVERY</span>
+                </div>
             </div>
         </div>
-        <div class="res-card">
-            <div class="res-img" style="background-image: url('https://images.unsplash.com/photo-1627626775846-122b778965ae?w=400')"></div>
-            <div class="res-info">
-                <h4>GROE Gourmet Pizza</h4>
-                <div class="res-meta"><i class="fas fa-star"></i> 4.9 (55 min)</div>
-                <div class="free-del">FREE Delivery</div>
+        <div class="search-container">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search restaurants, groceries, fastfood...">
             </div>
         </div>
-    </div>
-</div>
+        <div class="header-right">
+            <div class="location-link"><i class="fas fa-map-marker-alt" style="color:var(--stork-red)"></i> Richton Park, IL</div>
+            <div class="sign-in-bubble">Sign in</div>
+        </div>
+    </header>
 
-<div class="bottom-nav">
-    <a href="#" class="nav-link active"><i class="fas fa-home"></i>Home</a>
-    <a href="#" class="nav-link"><i class="fas fa-search"></i>Search</a>
-    <a href="#" class="nav-link"><i class="fas fa-list-alt"></i>Orders</a>
-    <a href="#" class="nav-link"><i class="fas fa-user"></i>Account</a>
-</div>
+    <div class="app-container">
+        <aside class="sidebar-left">
+            <div class="side-section">
+                <div class="side-title">Cuisine <i class="fas fa-chevron-down"></i></div>
+                <div class="filter-item"><input type="checkbox"> BBQ</div>
+                <div class="filter-item"><input type="checkbox"> Pizza</div>
+                <div class="filter-item"><input type="checkbox"> Grocery</div>
+                <div class="filter-item"><input type="checkbox"> Fast Food</div>
+                <div class="more-btn">More <i class="fas fa-chevron-down"></i></div>
+            </div>
+            <div class="side-section">
+                <div class="side-title">Rating <i class="fas fa-chevron-down"></i></div>
+                <div class="filter-item"><input type="radio" name="r"><i class="fas fa-star" style="color:gold"></i><i class="fas fa-star" style="color:gold"></i><i class="fas fa-star" style="color:gold"></i><i class="fas fa-star" style="color:gold"></i><i class="fas fa-star" style="color:gold"></i></div>
+                <div class="filter-item"><input type="radio" name="r"><i class="fas fa-star" style="color:gold"></i><i class="fas fa-star" style="color:gold"></i><i class="fas fa-star" style="color:gold"></i><i class="fas fa-star" style="color:gold"></i><i class="far fa-star"></i></div>
+            </div>
+            <div class="side-section">
+                <div class="side-title">Price <i class="fas fa-chevron-down"></i></div>
+                <div class="side-title">BBQ menu <i class="fas fa-chevron-down"></i></div>
+            </div>
+        </aside>
+
+        <main class="main-feed">
+            <div class="hero-banner">
+                <div class="stork-trio">
+                    <img src="https://groeentertainment.com/wp-content/uploads/2024/03/Stork_Logo_With_Bags-1024x1024.png" class="stork-fade">
+                    <img src="https://groeentertainment.com/wp-content/uploads/2024/03/Stork_Logo_With_Bags-1024x1024.png" class="stork-main">
+                    <img src="https://groeentertainment.com/wp-content/uploads/2024/03/Stork_Logo_With_Bags-1024x1024.png" class="stork-fade">
+                </div>
+                <div class="hero-text">
+                    <h2><span class="s-red">S</span><span class="rest-blue">UPER</span><span class="s-red">S</span><span class="rest-blue">TORK</span></h2>
+                    <div class="hero-sub">Upgraded Delivery For GROE ENTERTAINMENT, Inc - Place Your Order.</div>
+                </div>
+            </div>
+
+            <div class="thumbnail-grid">
+                <div class="thumb-card">
+                    <div class="thumb-img" style="background-image: url('https://images.unsplash.com/photo-1594179047519-f347310d3322?w=300')"></div>
+                    <i class="far fa-heart heart-icon"></i>
+                    <div class="thumb-info">
+                        <h4>Illinois Bass & BBQ</h4>
+                        <div class="thumb-meta"><span>4.8 <i class="fas fa-star" style="color:gold"></i></span> <span>25 min</span></div>
+                    </div>
+                </div>
+                <div class="thumb-card">
+                    <div class="thumb-img" style="background-image: url('https://images.unsplash.com/photo-1513104890138-7c749659a591?w=300')"></div>
+                    <i class="far fa-heart heart-icon"></i>
+                    <div class="thumb-info">
+                        <h4>GROE Gourmet Pizza</h4>
+                        <div class="thumb-meta"><span>4.9 <i class="fas fa-star" style="color:gold"></i></span> <span>55 min</span></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <aside class="sidebar-right">
+            <div class="side-title">Checkout <i class="fas fa-chevron-left"></i></div>
+            <div style="font-size: 13px; font-weight: bold; margin-bottom: 10px;">Delivery Details</div>
+            <div class="rect-bubble">Richton Park, IL</div>
+            <div class="rect-bubble">Delivery <i class="far fa-calendar-alt"></i></div>
+            <div class="rect-bubble">Richton Park, IL <i class="fas fa-chevron-down"></i></div>
+            
+            <div class="payment-summary">
+                <div style="font-weight: bold; margin-bottom: 10px;">Payment</div>
+                <div class="summary-row"><span>Subtotal</span> <span>$25.00</span></div>
+                <div class="summary-row"><span>Payment Tax</span> <span>$0.00</span></div>
+                <div class="summary-row" style="font-weight: bold; font-size: 14px; margin-top: 10px; border-top: 1px solid #eee; padding-top: 10px;">
+                    <span>Total</span> <span>$25.00</span>
+                </div>
+            </div>
+
+            <div class="btn-place-order">Place Order ($25.00 TEST)</div>
+            <div class="status-msg">Order Placed and on the way!</div>
+            <div style="text-align: center; margin-top: 10px;">
+                <img src="https://groeentertainment.com/wp-content/uploads/2024/03/Stork_Logo_With_Bags-1024x1024.png" style="height:60px;">
+            </div>
+            <div class="btn-place-order">PLACE ORDER ($25.00 TEST)</div>
+        </aside>
+    </div>
 
 </body>
 </html>
